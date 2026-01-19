@@ -123,24 +123,24 @@ export function HomeView({ onNavigate }: HomeViewProps) {
 
       {/* Stats rápidos */}
       <Card className="mt-2">
-        <CardContent>
-          <h3 className="font-medium text-lg text-white mb-4">Resumen general</h3>
+        <CardContent className="p-4">
+          <h3 className="font-semibold text-xl text-white mb-5">Resumen general</h3>
           <div className="space-y-4">
-            <div className="flex justify-between items-center py-1">
-              <span className="text-base text-slate-400">Ventas totales</span>
-              <span className="text-lg font-semibold text-green-400">
+            <div className="flex justify-between items-center py-2">
+              <span className="text-base text-slate-300">Ventas totales</span>
+              <span className="text-xl font-bold text-green-400">
                 {formatCurrency(totalReport.totalSales)}
               </span>
             </div>
-            <div className="flex justify-between items-center py-1">
-              <span className="text-base text-slate-400">Inversión total</span>
-              <span className="text-lg font-semibold text-orange-400">
+            <div className="flex justify-between items-center py-2">
+              <span className="text-base text-slate-300">Inversión total</span>
+              <span className="text-xl font-bold text-orange-400">
                 {formatCurrency(totalReport.totalInvestment)}
               </span>
             </div>
-            <div className="flex justify-between items-center py-1">
-              <span className="text-base text-slate-400">Días con ventas</span>
-              <span className="text-lg font-semibold text-white">
+            <div className="flex justify-between items-center py-2">
+              <span className="text-base text-slate-300">Días con ventas</span>
+              <span className="text-xl font-bold text-white">
                 {totalReport.daysWithSales}
               </span>
             </div>
