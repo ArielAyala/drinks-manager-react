@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { ChevronDown, ChevronUp, Check, Trash2 } from 'lucide-react';
-import { Card, CardContent, QuantitySelector } from '../ui';
+import { Card, CardContent, QuantitySelector, Toast } from '../ui';
 import { useDrinks, useSales } from '../../hooks/useStore';
 import { formatCurrency, formatDate, getTodayDate } from '../../utils/format';
 
@@ -11,6 +11,10 @@ export function SalesView() {
   const [expandedDrinkId, setExpandedDrinkId] = useState<string | null>(null);
   const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [activeSubTab, setActiveSubTab] = useState<'register' | 'history'>('register');
+  const [toast, setToast] = useState<{ message: string; isVisible: boolean }>({ 
+    message: '', 
+    isVisible: false 
+  });
   const activeDrinks = drinks.filter(d => d.active);
   const todaySales = getSalesByDate(selectedDate);
   const datesWithSales = getDatesWithSales();
@@ -18,6 +22,14 @@ export function SalesView() {
   // Obtener total del día
   const dailyTotal = todaySales.reduce((sum, s) => sum + s.total, 0);
   const dailyQuantity = todaySales.reduce((sum, s) => sum + s.quantity, 0);
+
+  const showToast = useCallback((message: string) => {
+    setToast({ message, isVisible: true });
+  }, []);
+
+  const hideToast = useCallback(() => {
+    setToast(prev => ({ ...prev, isVisible: false }));
+  }, []);
 
   const handleDrinkClick = (drinkId: string) => {
     if (expandedDrinkId === drinkId) {
@@ -45,6 +57,9 @@ export function SalesView() {
       date: selectedDate,
     });
 
+    // Mostrar toast de confirmación
+    showToast(`¡Venta registrada! ${quantity}x ${drink.name}`);
+
     // Resetear
     setQuantities(prev => ({ ...prev, [drink.id]: 1 }));
     setExpandedDrinkId(null);
@@ -70,6 +85,13 @@ export function SalesView() {
 
   return (
     <div className="space-y-5">
+      {/* Toast de confirmación */}
+      <Toast 
+        message={toast.message} 
+        isVisible={toast.isVisible} 
+        onClose={hideToast}
+      />
+
       {/* Título del día */}
       <div className="text-center py-2">
         <h2 className="text-xl font-semibold text-white">
