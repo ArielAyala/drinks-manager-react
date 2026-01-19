@@ -29,7 +29,7 @@ export function HomeView({ onNavigate }: HomeViewProps) {
   return (
     <div className="flex flex-col gap-6 py-4">
       {/* Título de bienvenida */}
-      <div className="text-center py-4">
+      <div className="text-center">
         <h2 className="text-3xl font-bold text-white">🍹 Drinks JM</h2>
         <p className="text-slate-400 text-base mt-2">Tu asistente de ventas de tragos</p>
       </div>
@@ -61,7 +61,7 @@ export function HomeView({ onNavigate }: HomeViewProps) {
       <Card className="mt-2">
         <CardContent>
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-medium text-lg text-white">Ventas de hoy</h3>
+            <h3 className="font-medium text-lg text-white ml-4">Ventas de hoy</h3>
             <button 
               onClick={() => onNavigate('sales')}
               className="text-indigo-400 text-base flex items-center gap-2 hover:text-indigo-300 py-2 px-3"
