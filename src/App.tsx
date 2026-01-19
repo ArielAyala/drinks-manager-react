@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import { Layout } from './components/Layout';
+import type { NavItem } from './components/Navigation';
+import {
+  HomeView,
+  SuppliesView,
+  DrinksView,
+  SalesView,
+  ReportsView,
+  SettingsView,
+} from './components/views';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [activeTab, setActiveTab] = useState<NavItem>('home');
+
+  const getTitle = () => {
+    const titles: Record<NavItem, string> = {
+      home: 'Drinks Manager',
+      supplies: 'Insumos',
+      drinks: 'Tragos',
+      sales: 'Ventas',
+      reports: 'Reportes',
+      settings: 'Configuración',
+    };
+    return titles[activeTab];
+  };
+
+  const renderView = () => {
+    switch (activeTab) {
+      case 'home':
+        return <HomeView onNavigate={setActiveTab} />;
+      case 'supplies':
+        return <SuppliesView />;
+      case 'drinks':
+        return <DrinksView />;
+      case 'sales':
+        return <SalesView />;
+      case 'reports':
+        return <ReportsView />;
+      case 'settings':
+        return <SettingsView />;
+      default:
+        return <HomeView onNavigate={setActiveTab} />;
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Layout activeTab={activeTab} onTabChange={setActiveTab} title={getTitle()}>
+      {renderView()}
+    </Layout>
+  );
 }
 
-export default App
+export default App;

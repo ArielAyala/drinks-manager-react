@@ -1,73 +1,126 @@
-# React + TypeScript + Vite
+# 🍹 Drinks Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación ligera y mobile-first para administrar un puesto de bebidas y tragos. Desarrollada con React + TypeScript + Tailwind CSS como una Progressive Web App (PWA).
 
-Currently, two official plugins are available:
+## ✨ Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Gestión de Insumos
+- Registro de inversiones en bebidas, estante, hielo, vasos y otros insumos
+- Historial de compras agrupado por fecha
+- Edición y eliminación de registros
 
-## React Compiler
+### Gestión de Tragos
+- 7 tragos precargados (Caipirinha, Mojito, Margarita, Piña Colada, Cuba Libre, Daiquiri de Durazno, Daiquiri de Frutilla)
+- Precio base de 15.000 ₲ (Guaraníes)
+- Posibilidad de editar precios, agregar nuevos tragos o desactivar temporalmente
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Registro de Ventas
+- Interfaz intuitiva estilo PedidosYa
+- Selector de cantidad con botones +/-
+- Visualización del total en tiempo real
+- Historial de ventas por día
 
-## Expanding the ESLint configuration
+### Reportes
+- **Reporte Diario**: Total vendido y desglose por trago
+- **Reporte Total**: Ganancia neta, ROI, inversión por categoría
+- Exportación a CSV de ventas, insumos y reporte total
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Otras características
+- PWA instalable en iOS/Android
+- Datos persistidos en localStorage
+- Modo oscuro optimizado para uso nocturno
+- Versión de la app visible en header
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Instalación
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Requisitos previos
+- Node.js 18+
+- npm o yarn
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Pasos
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/tu-usuario/drinks-manager-react.git
+
+# Entrar al directorio
+cd drinks-manager-react
+
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📱 Instalación como PWA (iOS)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Abre la aplicación en Safari
+2. Toca el botón de compartir (icono de cuadrado con flecha)
+3. Selecciona "Agregar a pantalla de inicio"
+4. Confirma el nombre y toca "Agregar"
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🛠️ Tecnologías
+
+- **React 19** - UI library
+- **TypeScript** - Tipado estático
+- **Tailwind CSS 4** - Estilos utility-first
+- **Vite** - Build tool
+- **vite-plugin-pwa** - Soporte PWA
+- **Lucide React** - Iconos
+- **date-fns** - Manejo de fechas
+
+## 📁 Estructura del proyecto
+
 ```
+src/
+├── components/
+│   ├── Layout.tsx          # Layout principal con header y nav
+│   ├── Navigation.tsx      # Barra de navegación inferior
+│   ├── ui/                 # Componentes UI reutilizables
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   ├── Modal.tsx
+│   │   ├── Input.tsx
+│   │   └── QuantitySelector.tsx
+│   └── views/              # Vistas principales
+│       ├── HomeView.tsx    # Dashboard principal
+│       ├── SuppliesView.tsx # ABM de insumos
+│       ├── DrinksView.tsx  # ABM de tragos
+│       ├── SalesView.tsx   # Registro de ventas
+│       ├── ReportsView.tsx # Reportes y exportación
+│       └── SettingsView.tsx # Configuración
+├── hooks/
+│   ├── useLocalStorage.ts  # Hook para persistencia
+│   └── useStore.ts         # Hooks de estado (supplies, drinks, sales)
+├── types/
+│   └── index.ts            # Interfaces y tipos
+├── utils/
+│   ├── format.ts           # Formateo de moneda y fechas
+│   └── reports.ts          # Lógica de reportes y exportación
+├── App.tsx
+├── App.css
+├── index.css
+└── main.tsx
+```
+
+## 💰 Moneda
+
+La aplicación utiliza **Guaraníes (PYG)** como moneda. Todos los valores son enteros (sin decimales).
+
+## 🔧 Scripts disponibles
+
+```bash
+npm run dev      # Servidor de desarrollo
+npm run preview  # Preview del build
+npm run build    # Build de producción
+npm run lint     # Linter
+```
+
+## 📄 Licencia
+
+MIT
+
+---
+
+Desarrollado con ❤️ para tu negocio de bebidas
