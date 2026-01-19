@@ -13,10 +13,8 @@ export function Layout({ children, activeTab, onTabChange, }: LayoutProps) {
   return (
     <div className="min-h-screen bg-slate-900 text-white flex flex-col">
       {/* Header */}
-      <header className="bg-slate-800 border-b border-slate-700 px-4 py-3 safe-area-pt">
-        <div className="flex items-center justify-center">
-          <span className="text-xs text-slate-500">v{packageJson.version}</span>
-        </div>
+      <header className="bg-slate-800 border-b border-slate-700 px-4 h-12 safe-area-pt flex items-center justify-center">
+        <span className="text-xs text-slate-500">v{packageJson.version}</span>
       </header>
 
       {/* Main content */}
