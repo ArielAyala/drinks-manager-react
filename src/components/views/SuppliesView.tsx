@@ -98,15 +98,18 @@ export function SuppliesView() {
     <div className="space-y-5">
       {/* Resumen */}
       <Card>
-        <CardContent>
+        <CardContent className="p-4">
           <div className="flex justify-between items-center">
             <div>
               <p className="text-base text-slate-400">Inversión Total</p>
               <p className="text-2xl font-bold text-white">{formatCurrency(totalInvestment)}</p>
             </div>
-            <Button onClick={handleOpenModal}>
-              <Plus size={20} className="mr-2" /> Agregar
-            </Button>
+            <button
+              onClick={handleOpenModal}
+              className="w-12 h-12 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full flex items-center justify-center transition-colors active:scale-95"
+            >
+              <Plus size={24} />
+            </button>
           </div>
         </CardContent>
       </Card>
