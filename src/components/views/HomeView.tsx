@@ -30,7 +30,7 @@ export function HomeView({ onNavigate }: HomeViewProps) {
     <div className="flex flex-col gap-6 py-4">
       {/* Título de bienvenida */}
       <div className="text-center py-4">
-        <h2 className="text-3xl font-bold text-white">🍹 Drinks Manager</h2>
+        <h2 className="text-3xl font-bold text-white">🍹 Drinks JM</h2>
         <p className="text-slate-400 text-base mt-2">Tu asistente de ventas de tragos</p>
       </div>
 
