@@ -298,24 +298,24 @@ export function ReportsView() {
                   className="w-full justify-center"
                   onClick={handleExportSales}
                 >
-                  <Download size={20} className="mr-2" />
-                  Exportar ventas (CSV)
+                  <Download size={20} />
+                  <span className="ml-2">Exportar ventas (CSV)</span>
                 </Button>
                 <Button 
                   variant="secondary" 
                   className="w-full justify-center"
                   onClick={handleExportSupplies}
                 >
-                  <Download size={20} className="mr-2" />
-                  Exportar insumos (CSV)
+                  <Download size={20} />
+                  <span className="ml-2">Exportar insumos (CSV)</span>
                 </Button>
                 <Button 
                   variant="secondary" 
                   className="w-full justify-center"
                   onClick={handleExportTotalReport}
                 >
-                  <Download size={20} className="mr-2" />
-                  Exportar reporte total (CSV)
+                  <Download size={20} />
+                  <span className="ml-2">Exportar reporte total (CSV)</span>
                 </Button>
               </div>
             </CardContent>
