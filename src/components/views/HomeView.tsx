@@ -28,13 +28,13 @@ export function HomeView({ onNavigate }: HomeViewProps) {
 
   return (
     <div className="flex flex-col gap-6 py-4">
-      {/* Título de bienvenida */}
+      {/* Welcome title */}
       <div className="text-center">
         <h2 className="text-3xl font-bold text-white">🍹 Drinks JM</h2>
         <p className="text-slate-400 text-base mt-2">Tu asistente de ventas de tragos</p>
       </div>
 
-      {/* Ganancia neta destacada */}
+      {/* Featured net profit */}
       <Card className="bg-gradient-to-br from-indigo-600 to-purple-700 border-0 mt-2">
         <CardContent className="py-8">
           <div className="text-center">
@@ -57,7 +57,7 @@ export function HomeView({ onNavigate }: HomeViewProps) {
         </CardContent>
       </Card>
 
-      {/* Resumen de hoy */}
+      {/* Today's summary */}
       <Card className="mt-2">
         <CardContent>
           <div className="flex items-center justify-between mb-4">
@@ -86,7 +86,7 @@ export function HomeView({ onNavigate }: HomeViewProps) {
         </CardContent>
       </Card>
 
-      {/* Accesos rápidos */}
+      {/* Quick actions */}
       <div className="grid grid-cols-3 gap-4 mt-2">
         <button
           onClick={() => onNavigate('sales')}
@@ -121,7 +121,7 @@ export function HomeView({ onNavigate }: HomeViewProps) {
         </button>
       </div>
 
-      {/* Stats rápidos */}
+      {/* Quick stats */}
       <Card className="mt-2">
         <CardContent className="p-4">
           <h3 className="font-semibold text-xl text-white mb-5">Resumen general</h3>

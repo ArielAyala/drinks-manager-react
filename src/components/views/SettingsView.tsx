@@ -16,7 +16,7 @@ export function SettingsView() {
 
   return (
     <div className="space-y-5">
-      {/* Información de la app */}
+      {/* App information */}
       <Card>
         <CardContent>
           <div className="flex items-center gap-4 mb-5">
@@ -56,7 +56,7 @@ export function SettingsView() {
         </CardContent>
       </Card>
 
-      {/* Almacenamiento */}
+      {/* Storage */}
       <Card>
         <CardContent>
           <h3 className="font-medium text-lg text-white mb-3">Almacenamiento</h3>
@@ -76,7 +76,7 @@ export function SettingsView() {
         </CardContent>
       </Card>
 
-      {/* Créditos */}
+      {/* Credits */}
       <Card>
         <CardContent>
           <p className="text-base text-slate-500 text-center">
@@ -88,7 +88,7 @@ export function SettingsView() {
         </CardContent>
       </Card>
 
-      {/* Modal de confirmación */}
+      {/* Confirmation modal */}
       <Modal
         isOpen={showConfirmModal}
         onClose={() => setShowConfirmModal(false)}

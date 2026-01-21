@@ -82,10 +82,10 @@ export function ReportsView() {
         </button>
       </div>
 
-      {/* Reporte Diario */}
+      {/* Daily Report */}
       {activeTab === 'daily' && (
         <div className="space-y-5">
-          {/* Selector de fecha */}
+          {/* Date selector */}
           <div className="flex gap-3 overflow-x-auto pb-2 -mx-4 px-4">
             <button
               onClick={() => setSelectedDate(getTodayDate())}
@@ -114,7 +114,7 @@ export function ReportsView() {
               ))}
           </div>
 
-          {/* Resumen del día */}
+          {/* Daily summary */}
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center gap-4 mb-5">
@@ -146,7 +146,7 @@ export function ReportsView() {
             </CardContent>
           </Card>
 
-          {/* Desglose por trago */}
+          {/* Breakdown by drink */}
           {dailyReport.salesByDrink.length > 0 && (
             <Card>
               <CardContent className="p-4">
@@ -176,10 +176,10 @@ export function ReportsView() {
         </div>
       )}
 
-      {/* Reporte Total */}
+      {/* Total Report */}
       {activeTab === 'total' && (
         <div className="space-y-5">
-          {/* Ganancia neta */}
+          {/* Net profit */}
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center gap-4 mb-5">
@@ -216,7 +216,7 @@ export function ReportsView() {
             </CardContent>
           </Card>
 
-          {/* Resumen financiero */}
+          {/* Financial summary */}
           <div className="grid grid-cols-2 gap-4">
             <Card>
               <CardContent className="p-4">
@@ -243,7 +243,7 @@ export function ReportsView() {
             </Card>
           </div>
 
-          {/* Estadísticas */}
+          {/* Statistics */}
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center gap-2 mb-4">
@@ -269,7 +269,7 @@ export function ReportsView() {
             </CardContent>
           </Card>
 
-          {/* Inversión por tipo */}
+          {/* Investment by type */}
           {totalReport.investmentByType.length > 0 && (
             <Card>
               <CardContent className="p-4">
@@ -288,7 +288,7 @@ export function ReportsView() {
             </Card>
           )}
 
-          {/* Botones de exportación */}
+          {/* Export buttons */}
           <Card>
             <CardContent className="p-4">
               <h3 className="text-base font-medium text-slate-400 mb-4">Exportar datos</h3>

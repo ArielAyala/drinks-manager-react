@@ -77,7 +77,7 @@ export function DrinksView() {
 
   return (
     <div className="space-y-5">
-      {/* Resumen */}
+      {/* Summary */}
       <Card>
         <CardContent className="p-4">
           <div className="flex justify-between items-center">
@@ -95,7 +95,7 @@ export function DrinksView() {
         </CardContent>
       </Card>
 
-      {/* Lista de tragos activos */}
+      {/* Active drinks list */}
       <div className="space-y-3">
         <h3 className="text-base font-medium text-slate-400 px-1">Tragos disponibles</h3>
         {activeDrinks.length === 0 ? (
@@ -146,7 +146,7 @@ export function DrinksView() {
         )}
       </div>
 
-      {/* Lista de tragos inactivos */}
+      {/* Inactive drinks list */}
       {inactiveDrinks.length > 0 && (
         <div className="space-y-3">
           <h3 className="text-base font-medium text-slate-400 px-1">Tragos inactivos</h3>
@@ -193,7 +193,7 @@ export function DrinksView() {
         </div>
       )}
 
-      {/* Modal de agregar/editar */}
+      {/* Add/Edit modal */}
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

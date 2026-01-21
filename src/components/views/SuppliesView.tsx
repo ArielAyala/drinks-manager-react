@@ -81,7 +81,7 @@ export function SuppliesView() {
 
   const totalInvestment = supplies.reduce((sum, s) => sum + s.amount, 0);
 
-  // Agrupar por fecha
+  // Group by date
   const groupedByDate = supplies.reduce((acc, supply) => {
     if (!acc[supply.date]) {
       acc[supply.date] = [];
@@ -96,7 +96,7 @@ export function SuppliesView() {
 
   return (
     <div className="space-y-5">
-      {/* Resumen */}
+      {/* Summary */}
       <Card>
         <CardContent className="p-4">
           <div className="flex justify-between items-center">
@@ -114,7 +114,7 @@ export function SuppliesView() {
         </CardContent>
       </Card>
 
-      {/* Lista de insumos */}
+      {/* Supplies list */}
       {sortedDates.length === 0 ? (
         <div className="text-center py-12 text-slate-400">
           <p className="text-lg">No hay insumos registrados</p>
@@ -165,7 +165,7 @@ export function SuppliesView() {
         ))
       )}
 
-      {/* Modal fullscreen para agregar/editar */}
+      {/* Fullscreen modal for add/edit */}
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -173,7 +173,7 @@ export function SuppliesView() {
         fullScreen
       >
         <form onSubmit={handleSubmit} className="flex flex-col min-h-full">
-          {/* Campos del formulario */}
+          {/* Form fields */}
           <div className="flex-1 px-6 py-6 space-y-6">
             <Select
               label="Tipo de insumo"
@@ -213,7 +213,7 @@ export function SuppliesView() {
             />
           </div>
 
-          {/* Botones fijos en la parte inferior */}
+          {/* Fixed buttons at bottom */}
           <div className="sticky bottom-0 bg-slate-900 border-t border-slate-700 px-6 py-5 space-y-4">
             <Button type="submit" className="w-full justify-center text-lg py-5">
               {editingId ? 'Guardar Cambios' : 'Agregar Insumo'}

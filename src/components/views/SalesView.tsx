@@ -19,7 +19,7 @@ export function SalesView() {
   const todaySales = getSalesByDate(selectedDate);
   const datesWithSales = getDatesWithSales();
 
-  // Obtener total del día
+  // Get daily totals
   const dailyTotal = todaySales.reduce((sum, s) => sum + s.total, 0);
   const dailyQuantity = todaySales.reduce((sum, s) => sum + s.quantity, 0);
 
@@ -57,10 +57,10 @@ export function SalesView() {
       date: selectedDate,
     });
 
-    // Mostrar toast de confirmación
+    // Show confirmation toast
     showToast(`¡Venta registrada! ${quantity}x ${drink.name}`);
 
-    // Resetear
+    // Reset state
     setQuantities(prev => ({ ...prev, [drink.id]: 1 }));
     setExpandedDrinkId(null);
   };
@@ -71,7 +71,7 @@ export function SalesView() {
     }
   };
 
-  // Agrupar ventas del día por trago
+  // Group daily sales by drink
   const salesByDrink = todaySales.reduce((acc, sale) => {
     const key = sale.drinkName;
     if (!acc[key]) {
@@ -85,21 +85,21 @@ export function SalesView() {
 
   return (
     <div className="space-y-5">
-      {/* Toast de confirmación */}
+      {/* Confirmation toast */}
       <Toast 
         message={toast.message} 
         isVisible={toast.isVisible} 
         onClose={hideToast}
       />
 
-      {/* Título del día */}
+      {/* Day title */}
       <div className="text-center py-2">
         <h2 className="text-xl font-semibold text-white">
           {selectedDate === getTodayDate() ? 'Hoy' : formatDate(selectedDate)}
         </h2>
       </div>
 
-      {/* Selector de fecha - solo si hay fechas anteriores con ventas */}
+      {/* Date selector - only if there are previous dates with sales */}
       {datesWithSales.filter(d => d !== getTodayDate()).length > 0 && (
         <div className="flex gap-3 overflow-x-auto pb-2">
           {datesWithSales
@@ -121,7 +121,7 @@ export function SalesView() {
         </div>
       )}
 
-      {/* Resumen del día */}
+      {/* Daily summary */}
       <Card>
         <CardContent className="p-4">
           <div className="grid grid-cols-2 gap-4">
@@ -166,9 +166,9 @@ export function SalesView() {
         </button>
       </div>
 
-      {/* Contenido de los tabs */}
+      {/* Tab content */}
       {activeSubTab === 'register' ? (
-        /* Selector de tragos para vender */
+        /* Drink selector for sales */
         <div className="space-y-3">
           {activeDrinks.length === 0 ? (
             <div className="text-center py-8 text-slate-400">
@@ -199,7 +199,7 @@ export function SalesView() {
                       )}
                     </button>
 
-                    {/* Panel expandido */}
+                    {/* Expanded panel */}
                     {isExpanded && (
                       <div className="p-4 pt-4 border-t border-slate-700 space-y-5">
                         <div className="flex items-center justify-between">
@@ -234,7 +234,7 @@ export function SalesView() {
           )}
         </div>
       ) : (
-        /* Ventas del día con scroll independiente */
+        /* Daily sales with independent scroll */
         <div className="space-y-3 max-h-[60vh] overflow-y-auto">
           {Object.keys(salesByDrink).length === 0 ? (
             <div className="text-center py-8 text-slate-400">
@@ -257,7 +257,7 @@ export function SalesView() {
                     </span>
                   </div>
 
-                  {/* Lista individual de ventas */}
+                  {/* Individual sales list */}
                   <div className="space-y-2 pt-3 border-t border-slate-700">
                     {data.sales.map(sale => (
                       <div key={sale.id} className="flex items-center justify-between text-base py-1">
