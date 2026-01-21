@@ -116,7 +116,7 @@ export function ReportsView() {
 
           {/* Resumen del día */}
           <Card>
-            <CardContent>
+            <CardContent className="p-4">
               <div className="flex items-center gap-4 mb-5">
                 <div className="w-12 h-12 bg-indigo-600/20 rounded-full flex items-center justify-center">
                   <Calendar size={24} className="text-indigo-400" />
@@ -149,7 +149,7 @@ export function ReportsView() {
           {/* Desglose por trago */}
           {dailyReport.salesByDrink.length > 0 && (
             <Card>
-              <CardContent>
+              <CardContent className="p-4">
                 <h3 className="text-base font-medium text-slate-400 mb-4">Ventas por trago</h3>
                 <div className="space-y-4">
                   {dailyReport.salesByDrink.map((item, index) => (
@@ -181,7 +181,7 @@ export function ReportsView() {
         <div className="space-y-5">
           {/* Ganancia neta */}
           <Card>
-            <CardContent>
+            <CardContent className="p-4">
               <div className="flex items-center gap-4 mb-5">
                 <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
                   totalReport.netProfit >= 0 ? 'bg-green-600/20' : 'bg-red-600/20'
@@ -219,7 +219,7 @@ export function ReportsView() {
           {/* Resumen financiero */}
           <div className="grid grid-cols-2 gap-4">
             <Card>
-              <CardContent>
+              <CardContent className="p-4">
                 <div className="flex items-center gap-2 mb-3">
                   <DollarSign size={20} className="text-green-400" />
                   <span className="text-base text-slate-400">Ventas totales</span>
@@ -231,7 +231,7 @@ export function ReportsView() {
             </Card>
 
             <Card>
-              <CardContent>
+              <CardContent className="p-4">
                 <div className="flex items-center gap-2 mb-3">
                   <Package size={20} className="text-orange-400" />
                   <span className="text-base text-slate-400">Inversión</span>
@@ -245,7 +245,7 @@ export function ReportsView() {
 
           {/* Estadísticas */}
           <Card>
-            <CardContent>
+            <CardContent className="p-4">
               <div className="flex items-center gap-2 mb-4">
                 <BarChart3 size={20} className="text-indigo-400" />
                 <span className="text-base font-medium text-slate-400">Estadísticas</span>
@@ -272,7 +272,7 @@ export function ReportsView() {
           {/* Inversión por tipo */}
           {totalReport.investmentByType.length > 0 && (
             <Card>
-              <CardContent>
+              <CardContent className="p-4">
                 <h3 className="text-base font-medium text-slate-400 mb-4">Inversión por categoría</h3>
                 <div className="space-y-3">
                   {totalReport.investmentByType.map((item, index) => (
@@ -290,7 +290,7 @@ export function ReportsView() {
 
           {/* Botones de exportación */}
           <Card>
-            <CardContent>
+            <CardContent className="p-4">
               <h3 className="text-base font-medium text-slate-400 mb-4">Exportar datos</h3>
               <div className="space-y-3">
                 <Button 

@@ -128,7 +128,7 @@ export function SuppliesView() {
             </h3>
             {groupedByDate[date].map(supply => (
               <Card key={supply.id}>
-                <CardContent className="py-4">
+                <CardContent className="p-4">
                   <div className="flex items-center justify-between">
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-white text-lg truncate">
