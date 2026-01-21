@@ -2,12 +2,19 @@ import { useLocalStorage } from './useLocalStorage';
 import type { Supply, DrinkType, Sale } from '../types';
 import { DEFAULT_DRINKS } from '../types';
 
-// Generar ID único
+// LocalStorage keys
+export const STORAGE_KEYS = {
+  SUPPLIES: 'drinks-manager-supplies',
+  DRINKS: 'drinks-manager-drinks',
+  SALES: 'drinks-manager-sales',
+} as const;
+
+// Generate unique ID
 const generateId = () => `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 
-// Hook para manejar insumos
+// Hook to manage supplies
 export function useSupplies() {
-  const [supplies, setSupplies, clearSupplies] = useLocalStorage<Supply[]>('drinks-manager-supplies', []);
+  const [supplies, setSupplies, clearSupplies] = useLocalStorage<Supply[]>(STORAGE_KEYS.SUPPLIES, []);
 
   const addSupply = (supply: Omit<Supply, 'id' | 'createdAt'>) => {
     const newSupply: Supply = {
@@ -50,7 +57,7 @@ export function useSupplies() {
   };
 }
 
-// Hook para manejar tipos de tragos
+// Hook to manage drink types
 export function useDrinks() {
   const getInitialDrinks = (): DrinkType[] => {
     return DEFAULT_DRINKS.map(d => ({
@@ -61,11 +68,11 @@ export function useDrinks() {
   };
 
   const [drinks, setDrinks, clearDrinks] = useLocalStorage<DrinkType[]>(
-    'drinks-manager-drinks',
+    STORAGE_KEYS.DRINKS,
     getInitialDrinks()
   );
 
-  // Si no hay tragos, inicializar con los predeterminados
+  // If no drinks, initialize with defaults
   if (drinks.length === 0) {
     const initialDrinks = getInitialDrinks();
     setDrinks(initialDrinks);
@@ -103,9 +110,9 @@ export function useDrinks() {
   };
 }
 
-// Hook para manejar ventas
+// Hook to manage sales
 export function useSales() {
-  const [sales, setSales, clearSales] = useLocalStorage<Sale[]>('drinks-manager-sales', []);
+  const [sales, setSales, clearSales] = useLocalStorage<Sale[]>(STORAGE_KEYS.SALES, []);
 
   const addSale = (sale: Omit<Sale, 'id' | 'createdAt' | 'total'>) => {
     const newSale: Sale = {
@@ -122,7 +129,7 @@ export function useSales() {
     setSales(prev => prev.map(s => {
       if (s.id === id) {
         const updated = { ...s, ...updates };
-        // Recalcular total si cambió quantity o pricePerUnit
+        // Recalculate total if quantity or pricePerUnit changed
         if (updates.quantity !== undefined || updates.pricePerUnit !== undefined) {
           updated.total = updated.quantity * updated.pricePerUnit;
         }

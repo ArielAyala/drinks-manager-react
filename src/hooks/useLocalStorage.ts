@@ -1,7 +1,8 @@
 import { useState, useCallback } from 'react';
+import { STORAGE_KEYS } from './useStore';
 
 export function useLocalStorage<T>(key: string, initialValue: T) {
-  // Obtener valor inicial del localStorage o usar el valor por defecto
+  // Get initial value from localStorage or use default value
   const [storedValue, setStoredValue] = useState<T>(() => {
     if (typeof window === 'undefined') {
       return initialValue;
@@ -16,7 +17,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     }
   });
 
-  // Guardar en localStorage cuando cambie el valor
+  // Save to localStorage when value changes
   const setValue = useCallback((value: T | ((val: T) => T)) => {
     try {
       setStoredValue(prev => {
@@ -33,7 +34,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     }
   }, [key]);
 
-  // Limpiar el valor del localStorage
+  // Clear value from localStorage
   const clearValue = useCallback(() => {
     try {
       if (typeof window !== 'undefined') {
@@ -49,10 +50,10 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
   return [storedValue, setValue, clearValue] as const;
 }
 
-// Hook para limpiar todos los datos de la app
+// Hook to clear all app data
 export function useClearAllData() {
   const clearAll = useCallback(() => {
-    const keys = ['drinks-manager-supplies', 'drinks-manager-drinks', 'drinks-manager-sales'];
+    const keys = Object.values(STORAGE_KEYS);
     keys.forEach(key => {
       window.localStorage.removeItem(key);
     });
