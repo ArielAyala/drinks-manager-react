@@ -1,126 +1,126 @@
 # 🍹 Drinks Manager
 
-Aplicación ligera y mobile-first para administrar un puesto de bebidas y tragos. Desarrollada con React + TypeScript + Tailwind CSS como una Progressive Web App (PWA).
+Lightweight, mobile-first application for managing a drinks and cocktails stand. Built with React + TypeScript + Tailwind CSS as a Progressive Web App (PWA).
 
-## ✨ Características
+## ✨ Features
 
-### Gestión de Insumos
-- Registro de inversiones en bebidas, estante, hielo, vasos y otros insumos
-- Historial de compras agrupado por fecha
-- Edición y eliminación de registros
+### Supplies Management
+- Track investments in drinks, shelves, ice, cups, and other supplies
+- Purchase history grouped by date
+- Edit and delete records
 
-### Gestión de Tragos
-- 7 tragos precargados (Caipirinha, Mojito, Margarita, Piña Colada, Cuba Libre, Daiquiri de Durazno, Daiquiri de Frutilla)
-- Precio base de 15.000 ₲ (Guaraníes)
-- Posibilidad de editar precios, agregar nuevos tragos o desactivar temporalmente
+### Drinks Management
+- 7 preloaded cocktails (Caipirinha, Mojito, Margarita, Piña Colada, Cuba Libre, Peach Daiquiri, Strawberry Daiquiri)
+- Base price of 15,000 ₲ (Guaraníes)
+- Edit prices, add new drinks, or temporarily deactivate them
 
-### Registro de Ventas
-- Interfaz intuitiva estilo PedidosYa
-- Selector de cantidad con botones +/-
-- Visualización del total en tiempo real
-- Historial de ventas por día
+### Sales Registration
+- Intuitive PedidosYa-style interface
+- Quantity selector with +/- buttons
+- Real-time total visualization
+- Daily sales history
 
-### Reportes
-- **Reporte Diario**: Total vendido y desglose por trago
-- **Reporte Total**: Ganancia neta, ROI, inversión por categoría
-- Exportación a CSV de ventas, insumos y reporte total
+### Reports
+- **Daily Report**: Total sales and breakdown by drink
+- **Total Report**: Net profit, ROI, investment by category
+- CSV export of sales, supplies, and total report
 
-### Otras características
-- PWA instalable en iOS/Android
-- Datos persistidos en localStorage
-- Modo oscuro optimizado para uso nocturno
-- Versión de la app visible en header
+### Other Features
+- Installable PWA on iOS/Android
+- Data persisted in localStorage
+- Dark mode optimized for nighttime use
+- App version visible in header
 
-## 🚀 Instalación
+## 🚀 Installation
 
-### Requisitos previos
+### Prerequisites
 - Node.js 18+
-- npm o yarn
+- npm or yarn
 
-### Pasos
+### Steps
 
 ```bash
-# Clonar el repositorio
-git clone https://github.com/tu-usuario/drinks-manager-react.git
+# Clone the repository
+git clone https://github.com/ArielAyala/drinks-manager-react.git
 
-# Entrar al directorio
+# Enter directory
 cd drinks-manager-react
 
-# Instalar dependencias
+# Install dependencies
 npm install
 
-# Iniciar servidor de desarrollo
+# Start development server
 npm run dev
 ```
 
-## 📱 Instalación como PWA (iOS)
+## 📱 Installing as PWA (iOS)
 
-1. Abre la aplicación en Safari
-2. Toca el botón de compartir (icono de cuadrado con flecha)
-3. Selecciona "Agregar a pantalla de inicio"
-4. Confirma el nombre y toca "Agregar"
+1. Open the app in Safari
+2. Tap the share button (square icon with arrow)
+3. Select "Add to Home Screen"
+4. Confirm the name and tap "Add"
 
-## 🛠️ Tecnologías
+## 🛠️ Technologies
 
 - **React 19** - UI library
-- **TypeScript** - Tipado estático
-- **Tailwind CSS 4** - Estilos utility-first
+- **TypeScript** - Static typing
+- **Tailwind CSS 4** - Utility-first styles
 - **Vite** - Build tool
-- **vite-plugin-pwa** - Soporte PWA
-- **Lucide React** - Iconos
-- **date-fns** - Manejo de fechas
+- **vite-plugin-pwa** - PWA support
+- **Lucide React** - Icons
+- **date-fns** - Date handling
 
-## 📁 Estructura del proyecto
+## 📁 Project Structure
 
 ```
 src/
 ├── components/
-│   ├── Layout.tsx          # Layout principal con header y nav
-│   ├── Navigation.tsx      # Barra de navegación inferior
-│   ├── ui/                 # Componentes UI reutilizables
+│   ├── Layout.tsx          # Main layout with header and nav
+│   ├── Navigation.tsx      # Bottom navigation bar
+│   ├── ui/                 # Reusable UI components
 │   │   ├── Button.tsx
 │   │   ├── Card.tsx
 │   │   ├── Modal.tsx
 │   │   ├── Input.tsx
 │   │   └── QuantitySelector.tsx
-│   └── views/              # Vistas principales
-│       ├── HomeView.tsx    # Dashboard principal
-│       ├── SuppliesView.tsx # ABM de insumos
-│       ├── DrinksView.tsx  # ABM de tragos
-│       ├── SalesView.tsx   # Registro de ventas
-│       ├── ReportsView.tsx # Reportes y exportación
-│       └── SettingsView.tsx # Configuración
+│   └── views/              # Main views
+│       ├── HomeView.tsx    # Main dashboard
+│       ├── SuppliesView.tsx # Supplies CRUD
+│       ├── DrinksView.tsx  # Drinks CRUD
+│       ├── SalesView.tsx   # Sales registration
+│       ├── ReportsView.tsx # Reports and export
+│       └── SettingsView.tsx # Settings
 ├── hooks/
-│   ├── useLocalStorage.ts  # Hook para persistencia
-│   └── useStore.ts         # Hooks de estado (supplies, drinks, sales)
+│   ├── useLocalStorage.ts  # Persistence hook
+│   └── useStore.ts         # State hooks (supplies, drinks, sales)
 ├── types/
-│   └── index.ts            # Interfaces y tipos
+│   └── index.ts            # Interfaces and types
 ├── utils/
-│   ├── format.ts           # Formateo de moneda y fechas
-│   └── reports.ts          # Lógica de reportes y exportación
+│   ├── format.ts           # Currency and date formatting
+│   └── reports.ts          # Reports logic and export
 ├── App.tsx
 ├── App.css
 ├── index.css
 └── main.tsx
 ```
 
-## 💰 Moneda
+## 💰 Currency
 
-La aplicación utiliza **Guaraníes (PYG)** como moneda. Todos los valores son enteros (sin decimales).
+The app uses **Guaraníes (PYG)** as currency. All values are integers (no decimals).
 
-## 🔧 Scripts disponibles
+## 🔧 Available Scripts
 
 ```bash
-npm run dev      # Servidor de desarrollo
-npm run preview  # Preview del build
-npm run build    # Build de producción
+npm run dev      # Development server
+npm run preview  # Preview build
+npm run build    # Production build
 npm run lint     # Linter
 ```
 
-## 📄 Licencia
+## 📄 License
 
 MIT
 
 ---
 
-Desarrollado con ❤️ para tu negocio de bebidas
+Developed with ❤️ for your drinks business
